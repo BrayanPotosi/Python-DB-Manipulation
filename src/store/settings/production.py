@@ -1,0 +1,18 @@
+from .base import *
+
+DEBUG = False
+
+ALLOWED_HOSTS = []
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': env("DATABASE"),
+        'USER': env("DB_USER"),
+        'PASSWORD': env("DB_PASSWORD"),
+        'HOST': env("DB_HOST"),
+        'PORT': env("DB_PORT")
+    }
+}
+
+STATIC_URL = '/static/'
