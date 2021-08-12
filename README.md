@@ -22,16 +22,21 @@ Application that allows you to navigate and perform operations on the 2 tables o
 `python -m venv .venv`
 
 4-  Activate the virtual environment
+
 `./.venv/scripts/activate`
 
 5- Install the requirements
+
 `pip install - r requirements.txt`
 
 6- Move to src folder 
+
 `cd src`
 
 7- Execute the migrations
+
 `python manage.py migrate`
 
 8- Run the django server
+
 `python manage.py runserver`
