@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Products List
+{% endblock title %}
+
+{% block content %}
+<hr class="mt-3 mb-3"/>
+<p style='text-align:center; font-weight: bold'>
+    products </p>
+<hr class="mt-3 mb-3"/>
+
+
+<div class="container">
+
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+        Add product
+    </button>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">product</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form style="display: flex; flex-direction: column" id="Products_form"
+                          action="{% url 'create_product' %}" method="POST">
+                        {% csrf_token %}
+
+                        {{ form }}<br>
+
+                        <input type="submit" class="btn btn-primary" value="Create">
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="mt-3 mb-3"/>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for product in products_list %}
+        <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.price }}</td>
+            <td>
+                <ul style="display: flex; list-style: none ">
+
+                    <li style="margin-right: 4%">
+                        <a href="#">
+                            <button type="button" class="btn btn-info"><img src="https://i.imgur.com/bwSutQk.png">
+                            </button>
+                        </a>
+                    </li>
+
+                    <li>
+                        <form style="display: flex; flex-direction: column" id="delete_form"
+                              action="{% url 'delete_product' %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" name="delete_button" class="btn btn-danger" value="{{ product.id }}">
+                                <img src="https://i.imgur.com/8lphSfP.png"></button>
+                        </form>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}
