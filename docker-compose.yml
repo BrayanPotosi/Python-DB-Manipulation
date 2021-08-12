@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./src
+    command: |
+      bash -c 'while !</dev/tcp/db/3306; do sleep 1; done; python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./src/:/src/
+    ports:
+      - 8000:8000
+    environment:
+      - DATABASE_URL=mysql://root:toor@db/store
+
+  db:
+    image: mysql
+    volumes:
+      - my-db:/var/lib/mysql
+    expose:
+      - 3306
+    environment:
+      - MYSQL_DATABASE=store
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=toor
+      - MYSQL_ROOT_PASSWORD=toor
+
+volumes:
+  my-db:
+
