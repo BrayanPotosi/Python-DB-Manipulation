@@ -2,11 +2,11 @@
 
 ##### App deployed using AWS EC2 and RDS with MySQL, check the app on : http://3.138.139.68:8000/
 
-### Django database administrator.
+## Django database administrator.
 Application that allows you to navigate and perform operations on the 2 tables of the application
 
 
-# Get started
+### Get started
 
 
 1- Clone the repository:
