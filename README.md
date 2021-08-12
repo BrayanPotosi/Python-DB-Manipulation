@@ -25,13 +25,13 @@ Application that allows you to navigate and perform operations on the 2 tables o
 
 `./.venv/scripts/activate`
 
-5- Install the requirements
-
-`pip install - r requirements.txt`
-
-6- Move to src folder 
+5- Move to src folder 
 
 `cd src`
+
+6- Install the requirements
+
+`pip install - r requirements.txt`
 
 7- Execute the migrations
 
